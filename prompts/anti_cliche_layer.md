@@ -70,8 +70,15 @@ For your reference, the script scans for:
 **Book Report Constructions (0 uses allowed):**
 - "The author notes/describes/argues/proposes..."
 - "The original text/letter/article states..."
+- "The letter/essay/article mentions/describes/argues..." (v0.9.0)
+- "In the letter/article/essay..." (v0.9.0)
 - "According to the source..."
 - Any reference to "the author" or "the original"
+
+**PowerPoint Headers (v0.9.0 - NEW):**
+- ALL CAPS headers like "THE BITTER LESSON", "PREDICTIONS"
+- Blog-style section breaks that interrupt narrative flow
+- Headers that feel like slides, not prose
 
 ---
 
@@ -128,6 +135,46 @@ REPLACEMENT VERIFICATION
 □ Fits the context and tone
 □ At least as funny as original (ideally funnier)
 □ Doesn't introduce new banned items
+```
+
+### 1d. PowerPoint Header Replacement (v0.9.0)
+
+When script finds `powerpoint_header` violations, replace with **narrative bridges**.
+
+Adams wrote fluid prose—he didn't use blog-style headers to separate thoughts. His transitions were woven into the text.
+
+**BAD (PowerPoint style):**
+```
+## THE BITTER LESSON
+
+The fundamental engine of AI progress is compute.
+```
+
+**GOOD (narrative bridge):**
+```
+This leads us, unfortunately, to a concept known as The Bitter Lesson, which—like most bitter lessons—would have been more useful if anyone had learned it before it was too late.
+
+The fundamental engine of AI progress, we are told, is compute.
+```
+
+**Replacement patterns:**
+- "This leads us, [unfortunately/inevitably/somehow], to..."
+- "Which brings us to the matter of..."
+- "There is, of course, an explanation for this. It is called..."
+- "At this point it becomes necessary to discuss..."
+- "The [topic] is worth examining, if only because..."
+
+**Headers are acceptable ONLY when:**
+- Used ironically as part of a Guide Entry format
+- Clearly formatted as mock-encyclopedia entries
+- Part of deliberate structural parody
+
+```
+POWERPOINT HEADER REPLACEMENT LOG
+=================================
+Header: "[ALL CAPS HEADER]" at line [N]
+→ Replaced with: "[narrative bridge + topic introduction]"
+→ Technique: Weave transition into prose flow
 ```
 
 ---
@@ -262,6 +309,10 @@ REPLACEMENT LOG (if violations found):
    → Technique: [what technique was preserved]
 
 2. ...
+
+POWERPOINT HEADER REPLACEMENTS (v0.9.0):
+1. "[ALL CAPS HEADER]" at line [N]
+   → Replaced with: "[narrative bridge]"
 
 INDUSTRIAL/DOMESTIC COLLISION:
 - Current density: [N per 500 words]

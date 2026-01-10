@@ -37,6 +37,22 @@ BANNED_PHRASES = [
     "slartibartfast",
     "magrathea",
 
+    # VERBATIM ADAMS OPENINGS (v0.9.0 - karaoke prevention)
+    "far out in the uncharted backwaters",
+    "unfashionable end of the western spiral arm",
+    "small unregarded yellow sun",
+    "utterly insignificant little blue-green planet",
+    "ape-descended life forms",
+    "still think digital watches are a pretty neat idea",
+    "in the beginning the universe was created",
+    "this has made a lot of people very angry",
+    "been widely regarded as a bad move",
+    "the ships hung in the sky",
+    "in much the same way that bricks don't",
+    "a bowl of petunias",
+    "oh no, not again",
+    "mostly harmless",  # moved from LIMITED to BANNED
+
     # Standard Earth cliches
     "deck chairs on the titanic",
     "rearranging deck chairs",
@@ -53,26 +69,56 @@ BANNED_PHRASES = [
     "circle back",
     "deep dive",
     "synergy",
+    "take it offline",
+    "get buy-in",
+    "raise the bar",
+    "paradigm shift",
+    "leverage",
 ]
 
-# Limited phrases (track count)
+# Limited phrases (track count, max 1 per 2000 words)
 LIMITED_PHRASES = [
     "not entirely unlike",
-    "mostly harmless",
     "thursday",
+    "tea",  # Track but don't ban - Adams loved tea
+    "towel",
 ]
 
-# Book report constructions (banned)
+# Book report constructions (banned) - v0.9.0 expanded
 BOOK_REPORT_PATTERNS = [
-    r"the author notes",
-    r"the author describes",
-    r"the author argues",
-    r"the author proposes",
-    r"the original text",
-    r"according to the source",
-    r"the writer's point",
-    r"this piece explains",
-    r"this essay describes",
+    # "The author" patterns
+    r"the author (notes|describes|argues|proposes|states|mentions|explains|suggests|writes|observes)",
+    r"the writer('s| notes| describes| argues)",
+
+    # "The letter/article/essay" patterns (v0.9.0 - critical addition)
+    r"the letter (states|mentions|notes|describes|argues|explains|says)",
+    r"the article (states|mentions|notes|describes|argues|explains)",
+    r"the essay (states|mentions|notes|describes|argues|explains)",
+    r"the text (states|mentions|notes|describes|argues|explains)",
+    r"the document (states|mentions|notes|describes|argues|explains)",
+    r"the piece (states|mentions|notes|describes|argues|explains)",
+    r"the post (states|mentions|notes|describes|argues|explains)",
+    r"the blog (states|mentions|notes|describes|argues|explains)",
+
+    # "In the letter/article" patterns
+    r"in the (letter|article|essay|text|document|piece|post|original)",
+    r"from the (letter|article|essay|text|document|piece|source)",
+
+    # "According to" patterns
+    r"according to the (source|author|letter|article|text|original)",
+
+    # "This piece/essay" patterns
+    r"this (piece|essay|article|letter|text|document) (explains|describes|argues|states|notes)",
+
+    # Generic attribution patterns
+    r"the original (text|letter|article|source)",
+    r"as (stated|mentioned|noted|described) in the",
+]
+
+# PowerPoint header patterns (v0.9.0 - new detection)
+POWERPOINT_HEADER_PATTERNS = [
+    r"^[A-Z][A-Z\s]{3,}$",  # ALL CAPS headers like "THE BITTER LESSON"
+    r"^#{1,3}\s+[A-Z][A-Z\s:,]{5,}$",  # Markdown headers in ALL CAPS
 ]
 
 
@@ -138,22 +184,39 @@ def find_banned_phrases(text: str) -> list[dict]:
                     found.append({
                         "phrase": phrase,
                         "line": i,
+                        "type": "banned_phrase",
                         "context": line.strip()[:100]
                     })
                     break
             else:
-                found.append({"phrase": phrase, "line": "unknown"})
+                found.append({"phrase": phrase, "line": "unknown", "type": "banned_phrase"})
 
     # Check book report patterns
     for pattern in BOOK_REPORT_PATTERNS:
-        matches = re.findall(pattern, text, re.IGNORECASE)
-        if matches:
-            for match in matches:
-                found.append({
-                    "phrase": match,
-                    "type": "book_report_construction",
-                    "line": "check manually"
-                })
+        # Use finditer to get full match objects, not just groups
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            full_match = match.group(0)  # Get the entire matched string
+            # Find line number
+            line_num = text[:match.start()].count('\n') + 1
+            found.append({
+                "phrase": full_match,
+                "type": "book_report_construction",
+                "line": line_num
+            })
+
+    # Check PowerPoint header patterns (v0.9.0)
+    for i, line in enumerate(text.split('\n'), 1):
+        line_stripped = line.strip()
+        for pattern in POWERPOINT_HEADER_PATTERNS:
+            if re.match(pattern, line_stripped):
+                # Exclude legitimate short headers
+                if len(line_stripped) > 4 and line_stripped not in ["THE", "AND", "BUT"]:
+                    found.append({
+                        "phrase": line_stripped,
+                        "type": "powerpoint_header",
+                        "line": i,
+                        "fix": "Replace with narrative bridge: 'This leads us to...'"
+                    })
 
     return found
 

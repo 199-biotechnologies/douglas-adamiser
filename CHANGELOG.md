@@ -6,6 +6,84 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.9.0] - 2026-01-10
+
+### Fixed - Critical Validation Gaps (Audit Response)
+
+Following a comprehensive audit that identified several critical failures allowing poor output, this release addresses all gaps.
+
+#### Karaoke Prevention (Verbatim Adams Quotes)
+
+**Problem:** The iconic "Far out in the uncharted backwaters..." opening was not banned, allowing the model to quote Adams directly instead of generating original content.
+
+**Fix:** Added 14 verbatim Adams phrases to BANNED_PHRASES in `scripts/validate_metrics.py`:
+- "far out in the uncharted backwaters"
+- "unfashionable end of the western spiral arm"
+- "small unregarded yellow sun"
+- "utterly insignificant little blue-green planet"
+- "ape-descended life forms"
+- "still think digital watches are a pretty neat idea"
+- "in the beginning the universe was created"
+- "this has made a lot of people very angry"
+- "been widely regarded as a bad move"
+- "the ships hung in the sky"
+- "a bowl of petunias"
+- "oh no, not again"
+- "mostly harmless" (moved from LIMITED to BANNED)
+
+#### Book Report Mode Prevention
+
+**Problem:** Caught "the author notes/describes" but missed "the letter mentions", "the article states", "in the essay", etc.
+
+**Fix:** Expanded BOOK_REPORT_PATTERNS to catch all variations:
+- "the letter/article/essay/text/document/post (states|mentions|notes|describes|argues)"
+- "in the (letter|article|essay|text|document|piece|post|original)"
+- "from the (letter|article|essay|text|document|piece|source)"
+- "as (stated|mentioned|noted|described) in the"
+
+#### PowerPoint Header Detection
+
+**Problem:** ALL CAPS headers like "THE BITTER LESSON" and "PREDICTIONS" were not detected, allowing blog-style formatting that Adams never used.
+
+**Fix:**
+- Added POWERPOINT_HEADER_PATTERNS to `scripts/validate_metrics.py`
+- Added replacement guidance to `prompts/anti_cliche_layer.md`
+- Headers now flagged with suggested narrative bridge replacements
+
+#### WebFetch Summarization Warning
+
+**Problem:** A 17,000-word article was summarized by WebFetch to ~700 words, resulting in 14% content coverage instead of the required 60-115%.
+
+**Fix:**
+- Added PRE-FLIGHT section to SKILL.md with explicit WebFetch warning
+- Added URL Sources warning section to orchestrator.md
+- Updated workflow diagram to emphasize "Get FULL source text, not summaries"
+
+#### Script Documentation Clarity
+
+**Problem:** SKILL.md referenced `validate_adams_style.py` but prompts used `validate_metrics.py`. Three scripts were orphaned (never called).
+
+**Fix:**
+- Reorganized Scripts section in SKILL.md into "Primary (Integrated)" and "Optional Standalone"
+- `validate_metrics.py` now clearly marked as MANDATORY
+- `chunk_text.py` documented for long text workflow
+- Orphaned scripts documented as exploratory/reference tools
+
+### Changed
+
+| File | Changes |
+|------|---------|
+| `scripts/validate_metrics.py` | +14 verbatim Adams bans, +20 book report patterns, +PowerPoint detection |
+| `prompts/anti_cliche_layer.md` | +PowerPoint header replacement guidance, +expanded book report list |
+| `prompts/orchestrator.md` | +WebFetch warning, +URL source workflow |
+| `SKILL.md` | +PRE-FLIGHT section, +script documentation, +expanded originality requirements |
+
+### Audit Report
+
+Full audit saved to `/Users/biobook/Projects/douglas-adamiser/AUDIT_REPORT.md`
+
+---
+
 ## [0.8.0] - 2026-01-10
 
 ### Changed - Script/Prompt Integration (80/20 Optimisation)

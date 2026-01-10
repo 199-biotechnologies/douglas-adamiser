@@ -9,8 +9,10 @@ INPUT TEXT
     │
     ▼
 ┌─────────────────────────────────────────────────────────┐
-│  PRE-FLIGHT: LENGTH ASSESSMENT & CHUNKING               │
-│  • Count source words                                   │
+│  PRE-FLIGHT: LENGTH ASSESSMENT & CHUNKING (v0.9.0)      │
+│  ⚠️  CRITICAL: Get FULL source text, not summaries      │
+│  • WebFetch summarizes long pages - get raw HTML/text   │
+│  • Count source words from FULL text                    │
 │  • If >10,000 words: Split into ~3000-word chunks       │
 │  • Each chunk processed in PARALLEL by separate agents  │
 │  • Chunks merged after Phase 3, unified pass at end     │
@@ -234,6 +236,30 @@ Run sequentially—each layer feeds the next.
 - Output: Final text + amplification report
 
 ## Execution Instructions
+
+### ⚠️ URL Sources (v0.9.0 - CRITICAL WARNING)
+
+When source is a URL rather than direct text:
+
+1. **WebFetch summarizes long pages** - A 17,000-word article may return as 700 words
+2. **ALWAYS verify source word count** before starting transformation
+3. **For long web content:**
+   - Use `curl` or browser to get full HTML
+   - Extract text content
+   - Count words in FULL text
+   - If >10,000 words, use chunking workflow
+
+**FAILURE MODE TO AVOID:**
+```
+URL (17k words) → WebFetch (700 word summary) → Transform → 2k word output
+                                                            ↑
+                                                  WRONG: Only 14% of content!
+```
+
+**CORRECT APPROACH:**
+```
+URL (17k words) → Get full text → Chunk (6 × 3k) → Transform each → Merge → 17k output
+```
 
 ### For Short Texts (<500 words)
 - Run all 4 Phase 1 agents in parallel

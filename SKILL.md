@@ -43,6 +43,27 @@ Every paragraph follows this arc: establish something seemingly important, eleva
 
 ## Execution Workflow
 
+### PRE-FLIGHT: Source Assessment (v0.9.0 - CRITICAL)
+
+**Before any transformation, assess the source:**
+
+1. **Get source text directly** - Do NOT rely on WebFetch summaries for word count
+2. **Count source words accurately**
+3. **If >10,000 words: Use chunking workflow**
+
+```bash
+# For long texts, chunk FIRST
+python scripts/chunk_text.py --input source.txt --output-dir chunks/
+# Each chunk gets full pipeline treatment
+# Merge outputs after Phase 3
+```
+
+**CRITICAL WARNING:** WebFetch summarizes long web pages. If transforming a URL:
+- Fetch the full HTML/text first
+- Count words in the FULL source
+- If >10,000 words, chunk before processing
+- Never transform a summary thinking it's the full text
+
 ### Step 1: Content Extraction & Fresh Material (CRITICAL)
 
 **Run Phase 0 BEFORE any transformation.**
@@ -186,12 +207,32 @@ See `prompts/orchestrator.md` for complete workflow coordination.
 
 ### Step 6: Validate
 
-Run validation suite:
+**MANDATORY: Run validate_metrics.py after Phase 2 synthesis:**
+```bash
+python scripts/validate_metrics.py --source original.txt --output transformed.txt --json
+```
+
+**For long texts (>10,000 words), use chunk_text.py FIRST:**
+```bash
+python scripts/chunk_text.py --input long_source.txt --output-dir chunks/
+# Process each chunk through the pipeline
+# Merge outputs, then run final validation
+```
+
+**Script checks (deterministic):**
+- Word count ratio (60-115% of source)
+- Banned phrases (Adams quotes, clichés, book report patterns, PowerPoint headers)
+- Deadpan markers ("in fact"/"of course" density)
+- Sentence distribution
+- Exclamation marks (<1 per 2000 words)
+- Question frequency (8-10 per 1000 words)
+
+**Optional: Run validate_adams_style.py for comprehensive final check:**
 ```bash
 python scripts/validate_adams_style.py <output_file>
 ```
 
-Checks for:
+Additional checks:
 - Bathos presence (varied placement, NOT formulaic intervals)
 - Digression density (at least 1 tangent per 300 words)
 - Inverted comparisons ("not like X, but like Y")
@@ -328,10 +369,16 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 - `reference/vocabulary_guide.md` - Adams vocabulary, neologisms, phrase patterns
 
 ### Scripts
-- `scripts/validate_adams_style.py` - Full validation suite (calibrated to corpus)
-- `scripts/bathos_detector.py` - Detect and score anti-climax patterns
-- `scripts/vocabulary_checker.py` - Check Adams vocabulary markers
-- `scripts/analyse_corpus.py` - Analyse text for Adams style statistics
+
+**Primary (Integrated into Pipeline):**
+- `scripts/validate_metrics.py` - **MANDATORY** - Deterministic validation (banned phrases, word counts, deadpan markers). Run after Phase 2, output feeds Phase 3 layers. Use `--json` for programmatic output.
+- `scripts/chunk_text.py` - **FOR LONG TEXTS** - Splits texts >10,000 words into ~3000-word chunks at natural breaks for parallel processing.
+
+**Optional Standalone Tools:**
+- `scripts/validate_adams_style.py` - Comprehensive style validation (can run independently for final check)
+- `scripts/bathos_detector.py` - Detect and score anti-climax patterns (exploratory analysis)
+- `scripts/vocabulary_checker.py` - Check Adams vocabulary markers (exploratory analysis)
+- `scripts/analyse_corpus.py` - Analyse text for Adams style statistics (reference tool)
 
 ### Examples
 - `examples/news_to_adams.md` - News article transformation
@@ -354,8 +401,11 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 - Use "quite"/"rather" NOT "utterly" for intensification
 - Use "said" for 90% of dialogue tags
 
-**Originality Requirements (NEW):**
+**Originality Requirements (v0.9.0 EXPANDED):**
 - 0 BANNED Adams tropes (brick similes, 42, Vogons, Babel fish, "Don't Panic", whale/petunias)
+- 0 VERBATIM Adams openings ("Far out in the uncharted backwaters...", "In the beginning the Universe was created...")
+- 0 Book report constructions ("the letter mentions", "the author argues", "in the article")
+- 0 PowerPoint headers (ALL CAPS section breaks - use narrative bridges instead)
 - LIMITED tropes within budget (max 1 "not entirely unlike" per 2000 words)
 - ≥70% of jokes must have multiple twists ("twist more than once")
 - Fresh observations from Observation Engine, not recycled Adams material
