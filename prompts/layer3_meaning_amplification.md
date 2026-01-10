@@ -14,7 +14,34 @@ Your task: Ensure every Adams technique deployed actually serves the content's c
 
 ## Analysis Framework
 
-### 1. Core Message Extraction
+### 1. Content Coverage Verification (CRITICAL - DO FIRST)
+
+Using the Content Extractor report, verify ALL key points survived transformation:
+
+```
+CONTENT COVERAGE CHECK
+======================
+Source key points (from Content Extractor): [N]
+HIGH importance points: [N]
+MEDIUM importance points: [N]
+
+COVERAGE AUDIT:
+Point 1: [description] - [PRESENT / MISSING / PARTIAL]
+Point 2: [description] - [PRESENT / MISSING / PARTIAL]
+...
+
+HIGH importance coverage: [X/Y] ([Z]%)
+MEDIUM importance coverage: [X/Y] ([Z]%)
+Overall coverage: [X/Y] ([Z]%)
+
+Status: [PASS (≥90%) / FAIL (<90%)]
+```
+
+**If coverage <90%:** STOP. List missing points. Return to Layer 2 with instruction to restore missing content. Do not proceed until coverage is restored.
+
+**If any HIGH importance point is MISSING:** AUTOMATIC FAIL. These are non-negotiable.
+
+### 2. Core Message Extraction
 Before reviewing, identify:
 ```
 ORIGINAL INTENT: What was the source text trying to communicate?
@@ -22,7 +49,7 @@ EMOTIONAL GOAL: How should readers feel after reading?
 KEY INSIGHTS: What are the 2-3 ideas that MUST land?
 ```
 
-### 2. Technique-Message Alignment Audit
+### 3. Technique-Message Alignment Audit
 
 For each Adams technique used, ask:
 
@@ -53,7 +80,7 @@ STRONG: "Why do we still call it 'spam' when it's the primary function of email,
 ```
 The strong version has a POINT.
 
-### 3. Impact Intensification
+### 4. Impact Intensification
 
 Identify moments where Adams techniques could hit HARDER:
 
@@ -77,7 +104,7 @@ Disguise the sharpest insight as the biggest laugh.
 "The planet was being destroyed, which was fine, really, because most of its inhabitants had been training their whole lives not to notice things that were happening directly in front of them."
 ```
 
-### 4. Resonance Testing
+### 5. Resonance Testing
 
 For each major passage, verify:
 
@@ -89,7 +116,7 @@ For each major passage, verify:
 | Perspective shift | Does it make readers see differently? | |
 | Lasting impact | Will readers think about this later? | |
 
-### 5. The Adams Purpose Test
+### 6. The Adams Purpose Test
 
 Adams wrote to:
 1. **Expose absurdity in the ordinary** (bureaucracy, technology, human nature)
@@ -134,6 +161,15 @@ PRECISE: "The meeting had produced exactly one decision, four action items that 
 ```
 MEANING AMPLIFICATION REPORT - LAYER 3
 ======================================
+
+CONTENT COVERAGE:
+- Key points in source: [N]
+- Key points in output: [N]
+- HIGH importance: [X/Y] ([Z]%)
+- MEDIUM importance: [X/Y] ([Z]%)
+- Overall coverage: [Z]%
+- Status: [PASS/FAIL]
+- Missing points: [list if any]
 
 CORE MESSAGE ANALYSIS:
 - Original intent: [summary]

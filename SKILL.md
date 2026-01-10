@@ -43,13 +43,26 @@ Every paragraph follows this arc: establish something seemingly important, eleva
 
 ## Execution Workflow
 
-### Step 1: Analyse Source
+### Step 1: Content Extraction (CRITICAL - Preserve First)
 
-Read input and extract:
-- Subject matter and key facts to preserve
-- Tone to subvert (formal, urgent, technical)
-- Natural bathos opportunities (anything presented as important)
-- Digression hooks (concepts begging for absurd elaboration)
+**Run `prompts/content_extractor.md` BEFORE any transformation.**
+
+This creates the source of truth for content preservation:
+- Measures source length and sets target range (60% to 115% of source)
+- Extracts ALL key points with importance ratings (HIGH/MEDIUM/LOW)
+- Maps structure for section-by-section transformation
+- Identifies Adams insertion opportunities that ADD without replacing
+
+```
+LENGTH TARGETS
+==============
+Source: [N] words
+Minimum (floor): [N × 0.60] words - DO NOT GO BELOW
+Maximum (ceiling): [N × 1.15] words
+Ideal: [N × 1.00] to [N × 1.10] words
+```
+
+**The Preserve-First Principle:** Adams added tangents ON TOP of content. He didn't compress. The Adamiser must do the same.
 
 ### Step 2: Plan Transformation
 
@@ -253,7 +266,8 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 ## Reference Files
 
 ### Agent Prompts (Multi-Layer System)
-- `prompts/orchestrator.md` - **CRITICAL** - Coordinates entire workflow with parallel agents and 3-layer review
+- `prompts/content_extractor.md` - **RUN FIRST** - Extracts key points, sets length targets, creates coverage checklist
+- `prompts/orchestrator.md` - Coordinates entire workflow with parallel agents and 3-layer review
 - `prompts/bathos_architect.md` - Bathos analysis and insertion (4 patterns, corpus timing)
 - `prompts/metaphor_engineer.md` - Comparison crafting (5 techniques, domain taxonomy)
 - `prompts/rhythm_analyst.md` - Sentence/paragraph structure (corpus targets)
@@ -294,12 +308,20 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 - Bathos instances (vary placement - NOT at fixed intervals, range 30-2200 words to first)
 - At least 1 digressive tangent per 300 words
 - At least 1 inverted comparison ("not like X, but like Y") per 500 words
-- 30% short sentences (≤10 words), especially at bathos moments
+- Mode-appropriate short sentence percentage (see contextual modes)
 - ~31% single-sentence paragraphs for rhythm and punchlines
 - Use "quite"/"rather" NOT "utterly" for intensification
 - Use "said" for 90% of dialogue tags
 
-**Length:** Input +30-80% expansion (digressions add content)
+**Length:** 60% to 115% of source (target: 100-110%)
+- Below 60%: Content has been lost - FAIL
+- 100-110%: Ideal (preserved content + Adams additions)
+- Above 115%: Review for over-tangenting
+
+**Content Coverage:** ≥90% of source key points must appear in output
+- HIGH importance points: 100% required (non-negotiable)
+- MEDIUM importance points: 85%+ required
+- Layer 3 verifies coverage before approval
 
 **Format:** Markdown (or HTML using appropriate template)
 
