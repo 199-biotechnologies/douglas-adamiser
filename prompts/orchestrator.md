@@ -9,6 +9,15 @@ INPUT TEXT
     │
     ▼
 ┌─────────────────────────────────────────────────────────┐
+│  PRE-FLIGHT: LENGTH ASSESSMENT & CHUNKING               │
+│  • Count source words                                   │
+│  • If >10,000 words: Split into ~3000-word chunks       │
+│  • Each chunk processed in PARALLEL by separate agents  │
+│  • Chunks merged after Phase 3, unified pass at end     │
+└─────────────────────────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────────────────────────┐
 │  PHASE 0: EXTRACTION & FRESH MATERIAL                   │
 │  ┌──────────────────────────────────────────────────┐   │
 │  │ Content Extractor (run first)                    │   │
@@ -228,17 +237,92 @@ Run sequentially—each layer feeds the next.
 - Synthesis as separate step
 - All 3 layers with full reports
 
-### For Long Texts (>2000 words)
+### For Long Texts (2000-10000 words)
 - Consider sectioning text before processing
 - Run Phase 1 agents on each section
 - Synthesise per section, then unify
 - Run quality layers on complete draft
+
+### For Very Long Texts (>10000 words) - PARALLEL CHUNKING
+
+When source exceeds 10,000 words, use dynamic parallel processing:
+
+**Step 1: Chunk the text**
+```
+Total words: N
+Chunk size: ~3000 words (at natural breaks - paragraphs, sections)
+Number of chunks: ceil(N / 3000)
+```
+
+**Step 2: Spawn parallel agents**
+Each chunk gets its own complete pipeline (Phase 0-3) running in parallel:
+```
+Chunk 1 → Agent Instance A → [Phase 0-3] → Output 1
+Chunk 2 → Agent Instance B → [Phase 0-3] → Output 2
+Chunk 3 → Agent Instance C → [Phase 0-3] → Output 3
+...
+```
+
+**Step 3: Merge outputs**
+- Concatenate chunk outputs in order
+- Run unified consistency pass:
+  - Voice consistency check
+  - Callback/reference alignment
+  - Transition smoothing between chunks
+
+**Step 4: Final validation**
+- Run `scripts/validate_metrics.py` on merged output
+- Address any cross-chunk issues
 
 ### For Chapters/Books
 - Process chapter by chapter
 - Maintain character voice consistency tracking
 - Cross-reference callbacks and running jokes
 - Final pass for continuity
+
+---
+
+## Validation Script Integration
+
+Use `scripts/validate_metrics.py` for deterministic statistical validation. The script handles metrics that LLMs are unreliable at calculating.
+
+### When to Run
+
+1. **After Phase 2 (Synthesis)** - Quick check before quality layers
+2. **After Phase 3 (Final)** - Final validation before delivery
+3. **After chunk merge** - For very long texts
+
+### Usage
+
+```bash
+# With source comparison (recommended)
+python scripts/validate_metrics.py --source original.txt --output transformed.txt
+
+# Output only (no length ratio check)
+python scripts/validate_metrics.py --output transformed.txt
+
+# JSON output for programmatic use
+python scripts/validate_metrics.py --source original.txt --output transformed.txt --json
+```
+
+### What It Validates
+
+| Metric | Target | Script Checks |
+|--------|--------|---------------|
+| Word count ratio | 60-115% of source | ✓ Exact calculation |
+| Sentence distribution | 30% short, 46% medium | ✓ Exact calculation |
+| "in fact" / "of course" | 1+ per 2000 words | ✓ Regex count |
+| Exclamation marks | <1 per 2000 words | ✓ Exact count |
+| Questions | 8-10 per 1000 words | ✓ Exact count |
+| Banned phrases | 0 | ✓ Pattern matching |
+| "utterly" overuse | <1 per 1000 words | ✓ Exact count |
+
+### Interpreting Results
+
+The script exits with code 0 (pass) or 1 (issues found). When issues are found, the LLM should:
+1. Read the failure list
+2. Return to appropriate phase for corrections
+3. Re-run validation after fixes
 
 ## Output Requirements
 

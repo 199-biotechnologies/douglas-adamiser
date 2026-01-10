@@ -6,6 +6,59 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.7.0] - 2026-01-10
+
+### Added - Validation Scripts & Dynamic Chunking
+
+Addressing context limits and LLM reliability issues with deterministic Python scripts.
+
+#### Validation Script (`scripts/validate_metrics.py`)
+
+Python script for statistical validation that LLMs are unreliable at:
+- Word count ratio (60-115% of source) - exact calculation
+- Sentence length distribution - exact calculation
+- "in fact" / "of course" density - regex count
+- Exclamation mark count - exact count
+- Question frequency - exact count
+- Banned phrase detection - pattern matching
+- "utterly" overuse check - exact count
+
+Usage:
+```bash
+python scripts/validate_metrics.py --source original.txt --output transformed.txt
+python scripts/validate_metrics.py --output output.txt --json
+```
+
+#### Chunking Script (`scripts/chunk_text.py`)
+
+For very long texts (>10,000 words), splits at natural breaks:
+- Target chunk size: ~3000 words
+- Finds natural breaks (sections > paragraphs > sentences)
+- Outputs chunk files + manifest for parallel processing
+
+Usage:
+```bash
+python scripts/chunk_text.py --input long_text.txt --output-dir chunks/
+```
+
+#### Dynamic Parallel Processing (orchestrator.md)
+
+New workflow for texts >10,000 words:
+1. Pre-flight length assessment
+2. Chunk into ~3000-word pieces at natural breaks
+3. Spawn parallel agent instances (one per chunk)
+4. Each chunk runs complete Phase 0-3 pipeline
+5. Merge outputs with consistency pass
+6. Final validation with `validate_metrics.py`
+
+### Changed
+
+- Updated orchestrator with Pre-flight step for length assessment
+- Added Validation Script Integration section to orchestrator
+- Expanded execution instructions for very long texts
+
+---
+
 ## [0.6.0] - 2026-01-10
 
 ### Added - Corpus Analysis Deep Dive
