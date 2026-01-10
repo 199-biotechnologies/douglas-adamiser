@@ -171,7 +171,16 @@ Launch these agents SIMULTANEOUSLY on the input text.
 
 ## Phase 2: Synthesis
 
-Merge agent outputs into a coherent draft:
+Merge agent outputs into a coherent draft.
+
+**IMPORTANT:** After synthesis, run the validation script BEFORE Phase 3:
+
+```bash
+# Save draft to file and validate
+python scripts/validate_metrics.py --source source.txt --output draft.txt --json
+```
+
+The script output travels into Phase 3 - all quality layers receive it.
 
 ### Priority Order
 When recommendations conflict:
@@ -192,25 +201,24 @@ Produce complete transformed text incorporating all agent recommendations.
 
 ## Phase 3: Quality Layers
 
+**PREREQUISITE:** Validation script must have run. All layers receive script JSON output.
+
 Run sequentially—each layer feeds the next.
 
 ### Layer 1: Style Fidelity Check
 - Prompt: `prompts/layer1_fidelity_check.md`
-- Input: First draft from Phase 2
-- Task: Detect style deviations using corpus-calibrated metrics
-- Output: Fidelity report with specific flags and locations
+- Input: First draft + **SCRIPT JSON OUTPUT** (mandatory)
+- Task: INTERPRET script statistics in context, qualitative checks
+- **Does NOT count** - trusts script for all statistical validation
+- Output: Fidelity report with interpretations and qualitative flags
 
-### Anti-Cliché Layer (NEW - between Layer 1 and 2)
+### Anti-Cliché Layer (between Layer 1 and 2)
 - Prompt: `prompts/anti_cliche_layer.md`
-- Input: First draft + Layer 1 report
-- Task: Detect recycled Adams tropes and insufficient joke depth
-- Checks:
-  - BANNED items (brick similes, 42, Vogons, etc.) - must be 0
-  - LIMITED items (not entirely unlike, tea, towels) - tracked against budget
-  - "Twist more than once" audit - single-twist jokes flagged
-  - Originality percentage of new material vs recycled
-- Output: Anti-Cliché report with replacement recommendations
-- **If BANNED items found:** Must fix before proceeding
+- Input: First draft + Layer 1 report + **SCRIPT JSON OUTPUT** (banned_phrases)
+- Task: REPLACE detected violations, qualitative warmth/logic checks
+- **Does NOT detect** - trusts script for banned phrase detection
+- Output: Replacement log + qualitative assessment
+- **If script found BANNED items:** Must replace before proceeding
 
 ### Layer 2: Technique Refinement
 - Prompt: `prompts/layer2_technique_refinement.md`
@@ -282,13 +290,15 @@ Chunk 3 → Agent Instance C → [Phase 0-3] → Output 3
 
 ---
 
-## Validation Script Integration
+## Validation Script Integration (MANDATORY)
 
 Use `scripts/validate_metrics.py` for deterministic statistical validation. The script handles metrics that LLMs are unreliable at calculating.
 
+**This is NOT optional.** LLMs cannot reliably count words, sentences, or detect all banned phrases. The script does this deterministically.
+
 ### When to Run
 
-1. **After Phase 2 (Synthesis)** - Quick check before quality layers
+1. **After Phase 2 (Synthesis)** - MANDATORY before quality layers (Layer 1 requires script output)
 2. **After Phase 3 (Final)** - Final validation before delivery
 3. **After chunk merge** - For very long texts
 
@@ -386,16 +396,20 @@ PHASE 1 - Parallel Analysis:
 
 PHASE 2 - Synthesis:
 6. Synthesise into first draft using fresh material
+7. Run validate_metrics.py on draft → SCRIPT JSON OUTPUT (MANDATORY)
 
-PHASE 3 - Quality Layers:
-7. Pass to layer1_fidelity_check → Fidelity report
-8. Pass to anti_cliche_layer → Anti-Cliché report (check for banned tropes)
-9. Pass draft + both reports to layer2_technique_refinement → Refined draft
-10. Pass refined draft + original to layer3_meaning_amplification → Final text
+PHASE 3 - Quality Layers (all receive script output):
+8. Pass draft + SCRIPT OUTPUT to layer1_fidelity_check → Fidelity report
+9. Pass draft + reports + SCRIPT OUTPUT to anti_cliche_layer → Replacement log
+10. Pass draft + all reports to layer2_technique_refinement → Refined draft
+11. Pass refined draft + original to layer3_meaning_amplification → Final text
+
+VALIDATION:
+12. Run validate_metrics.py on final output → Final validation
 
 DELIVERY:
-11. Verify quality gates (including originality gate)
-12. Deliver final text with reports
+13. Verify quality gates (including originality gate)
+14. Deliver final text with reports
 ```
 
 ## Error Handling

@@ -6,6 +6,100 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.8.0] - 2026-01-10
+
+### Changed - Script/Prompt Integration (80/20 Optimisation)
+
+Implementing the principle: LLMs count poorly but judge well. Scripts count deterministically.
+
+#### Architecture Change
+
+**Before:** Prompts did everything (counting + judgment)
+**After:** Scripts count → JSON → LLMs interpret and judge
+
+This separation leverages each tool's strengths:
+- Python scripts: Deterministic counting, pattern matching, statistical validation
+- LLM prompts: Contextual interpretation, qualitative assessment, creative replacement
+
+#### Layer 1 Fidelity Check (`prompts/layer1_fidelity_check.md`)
+
+**Removed (~35% of content):**
+- Step 1: Word count calculations
+- Step 2: Sentence length distribution counting
+- Step 3: Paragraph structure counting
+- Step 7b: "in fact"/"of course" density counting
+- Step 7c: Exclamation mark counting
+
+**Added:**
+- Step 0: Read Validation Script Output (REQUIRED)
+- Script JSON parsing instructions
+- "TRUST THE SCRIPT" rule for all counting
+
+**Kept (qualitative):**
+- Mode detection (Guide Entry, Narrative, Philosophical, etc.)
+- Bathos presence assessment
+- Comparison technique evaluation
+- Opening pattern analysis
+- Anti-efficiency audit
+- Pattern diversity tracking
+
+#### Anti-Cliché Layer (`prompts/anti_cliche_layer.md`)
+
+**Removed:**
+- Step 1: Banned phrase scanning (script does this)
+- All counting and frequency tracking
+
+**Added:**
+- Step 0: Read Script Detection Report (REQUIRED)
+- Integration note: "Script detects, you replace and judge"
+
+**Kept (qualitative):**
+- Replacement Protocol (technique identification, fresh generation)
+- Industrial/Domestic Collision Check
+- Adams Universe Logic Check
+- Warm Absurdism Check
+- "Twist More Than Once" Test
+
+#### Content Extractor (`prompts/content_extractor.md`)
+
+**Removed:**
+- Step 1: Source metrics (word count, paragraph count)
+- Step 5: Length target calculations
+- Chain-of-thought counting steps
+
+**Added:**
+- Note that script handles all counting
+- Renumbered steps (4 steps instead of 6)
+
+**Kept:**
+- Structure extraction
+- Key point extraction with importance ratings
+- Adams insertion opportunities
+- Compression risk flagging
+- "Not a Book Report" rule
+
+#### Orchestrator (`prompts/orchestrator.md`)
+
+**Changed:**
+- "Validation Script Integration" → "Validation Script Integration (MANDATORY)"
+- Added script execution as required step after Phase 2
+- Updated Phase 3 descriptions to note "Does NOT count - trusts script"
+- Updated example orchestration with script step
+
+**Added:**
+- Explicit note: "This is NOT optional. LLMs cannot reliably count."
+
+#### Impact Summary
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Layer 1 size | ~8 checkpoints with counting | ~5 qualitative checks |
+| Anti-Cliché scanning | Manual LLM scan | Script detection |
+| Counting reliability | ~70% (LLM estimates) | 100% (Python) |
+| Context efficiency | Counting instructions bloated prompts | Lean prompts, script handles counting |
+
+---
+
 ## [0.7.0] - 2026-01-10
 
 ### Added - Validation Scripts & Dynamic Chunking

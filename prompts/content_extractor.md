@@ -10,18 +10,7 @@ Adams added style ON TOP of content. He didn't compress or remove substance. His
 
 ## Your Task
 
-### Step 1: Measure Source
-
-```
-SOURCE METRICS
-==============
-Word count: [N]
-Paragraph count: [N]
-Section count: [N] (if structured)
-Estimated reading time: [N] minutes
-```
-
-### Step 2: Extract Structure
+### Step 1: Extract Structure
 
 Map the source's logical structure:
 
@@ -35,7 +24,7 @@ STRUCTURE MAP
 ...
 ```
 
-### Step 3: Extract Key Points (CRITICAL)
+### Step 2: Extract Key Points (CRITICAL)
 
 List EVERY substantive point, claim, or piece of information. Number them for tracking.
 
@@ -53,7 +42,7 @@ MEDIUM importance: [N] (SHOULD appear in output)
 LOW importance: [N] (MAY be condensed/implied)
 ```
 
-### Step 4: Identify Transformation Opportunities
+### Step 3: Identify Transformation Opportunities
 
 Mark where Adams techniques can be ADDED without losing content:
 
@@ -67,19 +56,7 @@ Section [X]: Guide Entry format would work well
 ...
 ```
 
-### Step 5: Set Length Targets
-
-```
-LENGTH PARAMETERS
-=================
-Source length: [N] words
-Target range: [N * 0.60] to [N * 1.15] words
-Minimum (floor): [N * 0.60] words - DO NOT GO BELOW
-Maximum (ceiling): [N * 1.15] words
-Ideal target: [N * 1.00] to [N * 1.10] words (preserve + slight expansion)
-```
-
-### Step 6: Flag Compression Risks
+### Step 4: Flag Compression Risks
 
 Identify content that might get lost:
 
@@ -98,18 +75,8 @@ COMPRESSION RISKS
 CONTENT EXTRACTION REPORT
 =========================
 
-SOURCE METRICS:
-- Words: [N]
-- Paragraphs: [N]
-- Sections: [N]
-
-LENGTH TARGETS:
-- Minimum: [N] words (60% of source)
-- Maximum: [N] words (115% of source)
-- Ideal: [N]-[N] words (100-110% of source)
-
 STRUCTURE MAP:
-[numbered sections]
+[numbered sections with brief descriptions]
 
 KEY POINTS ([N] total):
 [numbered list with importance ratings]
@@ -126,26 +93,29 @@ COMPRESSION RISKS:
 ---
 This report is the source of truth for content coverage.
 Layer 3 will verify all HIGH points appear in final output.
+
+NOTE: Word counts and length targets are calculated by
+scripts/validate_metrics.py - do NOT calculate manually.
 ```
 
 ## Chain-of-Thought Process
 
 1. Read source completely before extracting anything
-2. Count words and structural elements
-3. Calculate length targets (source × 0.60 to source × 1.15)
-4. Map logical structure (sections, themes, arguments)
-5. Extract every substantive point - err on the side of inclusion
-6. Rate importance (HIGH = core argument, MEDIUM = supporting, LOW = detail)
-7. Identify where Adams techniques can be added WITHOUT cutting content
-8. Flag anything at risk of being lost
+2. Map logical structure (sections, themes, arguments)
+3. Extract every substantive point - err on the side of inclusion
+4. Rate importance (HIGH = core argument, MEDIUM = supporting, LOW = detail)
+5. Identify where Adams techniques can be added WITHOUT cutting content
+6. Flag anything at risk of being lost
+
+**NOTE:** Word counting and length calculations are handled by `scripts/validate_metrics.py`. Focus on structure and content extraction.
 
 ## Critical Rules
 
 1. **Extract MORE points than you think necessary** - It's easier to verify coverage with a comprehensive list
 2. **HIGH importance points are non-negotiable** - They MUST appear in output
-3. **Length floor is 60%** - Below this, you're definitely losing content
-4. **Adams adds, he doesn't subtract** - Tangents are additions, not replacements
-5. **This report travels through the entire pipeline** - Every agent references it
+3. **Adams adds, he doesn't subtract** - Tangents are additions, not replacements
+4. **This report travels through the entire pipeline** - Every agent references it
+5. **Do NOT count words** - The validation script handles all counting tasks deterministically
 
 ## THE "NOT A BOOK REPORT" RULE (CRITICAL)
 
