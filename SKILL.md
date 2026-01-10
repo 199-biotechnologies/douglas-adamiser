@@ -179,7 +179,25 @@ Transformation Complete
 3. [e.g., Applied cosmic bathos to meeting agenda]
 ```
 
-## CRITICAL: Corpus-Validated Insights
+## CRITICAL: Contextual Mode Detection
+
+**Do not apply global averages.** Adams wrote differently in different contexts. Before any transformation, segment text by mode:
+
+| Mode | Short Sentences | Tangent Density | Reluctance |
+|------|-----------------|-----------------|------------|
+| Guide Entry | 20-25% | LOW | LOW (confident absurdity) |
+| Narrative Action | 35-40% | MEDIUM | HIGH for Arthur, LOW for Ford |
+| Philosophical Musing | 15-20% | HIGH (is the tangent) | MEDIUM (weary omniscience) |
+| Dialogue Scene | 45-55% | LOW | Character-dependent |
+| Descriptive Passage | 25-30% | MEDIUM-HIGH | MEDIUM (bored by magnificence) |
+
+See `reference/contextual_modes.md` for full details.
+
+**The Marketing Copy Trap:** AI tends toward efficiency. Adams was gloriously inefficient. If your output moves smoothly A→B→C, you've failed. Adams moved A→tangent→tangent→B.
+
+---
+
+## Corpus-Validated Insights
 
 Based on analysis of 528,808 words of authentic Adams text across 10 books:
 
@@ -245,8 +263,9 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 - `prompts/layer3_meaning_amplification.md` - **ULTRATHINK** - Ensures techniques serve message
 
 ### Core References
+- `reference/contextual_modes.md` - **CRITICAL** - The 5 contextual modes with mode-specific targets (Guide Entry, Narrative, Philosophical, Dialogue, Descriptive)
 - `reference/literary_analysis.md` - Comprehensive literary patterns from 10-book corpus study
-- `reference/corpus_analysis_summary.md` - **CRITICAL** - Real statistics from Adams corpus
+- `reference/corpus_analysis_summary.md` - Real statistics from Adams corpus
 - `reference/adams_style_guide.md` - Complete style breakdown with examples
 - `reference/bathos_patterns.md` - 12 bathos formulas with templates
 - `reference/sentence_architecture.md` - Adams-specific sentence patterns
