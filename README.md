@@ -24,17 +24,29 @@ These are facts. They are the kind of facts that separate authentic Adams voice 
 
 Quite hard, as it turns out.
 
-## The Three-Layer Ultrathink System
+## The Four-Layer Ultrathink System
 
-Most style transfer produces parody. This skill produces something rather better, through a three-layer quality system:
+Most style transfer produces parody. Worse, it produces the *same* parody every time – all bricks and digital watches and "not entirely unlike" constructions deployed with the subtlety of a Vogon reading poetry.
+
+Adams was original. "Hordes of writers have tried to copy his style," noted one literary analyst, "but none successfully." This skill aims to be the first to try properly, through a four-layer quality system:
 
 **Layer 1: Style Fidelity Check** – Detects deviations from corpus-validated patterns. Does not fix anything. Merely points and, in its way, judges.
 
-**Layer 2: Technique Refinement** – Applies surgical corrections to flagged issues. Replaces "very" with "quite". Restructures monotonous sentences. Inserts bathos at appropriate moments.
+**Anti-Cliché Layer** – The crucial innovation. Detects recycled Adams tropes (brick similes, 42 references, Vogon anything) and bans them entirely. Verifies that jokes have been "twisted more than once" – because Adams never settled for the first punchline when a better one was hiding behind it.
 
-**Layer 3: Meaning Amplification** – This is the important bit. It ensures that every Adams technique doesn't just mimic his style but actually makes the content *stronger*. Decorative absurdity fails this layer. Truth dressed in comedy passes.
+**Layer 2: Technique Refinement** – Applies surgical corrections to flagged issues. Replaces banned clichés with *fresh* observations from the Observation Engine.
 
-The principle is simple: Adams used humour as a precision instrument for truth-telling. The Adamiser does the same, or it does nothing at all.
+**Layer 3: Meaning Amplification** – Ensures that every Adams technique doesn't just mimic his style but actually makes the content *stronger*. Decorative absurdity fails this layer. Truth dressed in comedy passes.
+
+The principle is simple: Adams used humour as a precision instrument for truth-telling. He invented new jokes. The Adamiser does the same, or it does nothing at all.
+
+## The Originality Engines
+
+The skill now includes two originality engines that run before any transformation:
+
+**Observation Engine** – Asks "what's actually strange about this if you think about it?" for your specific source text. Generates fresh observations graded A/B/C. These become the raw material for jokes, not recycled Adams lines.
+
+**Contemporary Adams Vision** – Identifies what Adams would find absurd about 2015-2025: subscription everything, AI assistants that apologise constantly, terms of service longer than novels, password requirements designed to be unforgettable yet impossible to remember. The digital watch of our era.
 
 ## Installation
 
@@ -54,30 +66,38 @@ Then simply ask Claude to "Adamise this", "write like Douglas Adams", or "make t
 ```
 
 The skill will:
-1. Analyse your source text
-2. Launch parallel specialist agents (Bathos Architect, Metaphor Engineer, Rhythm Analyst, Dialogue Transformer)
-3. Synthesise their recommendations
-4. Run the three-layer quality review
+1. Extract content and generate fresh observations (Observation Engine + Contemporary Adams Vision)
+2. Launch parallel specialist agents (Bathos Architect, Metaphor Engineer, Rhythm Analyst, Tangent Injector)
+3. Synthesise their recommendations using the fresh material
+4. Run the four-layer quality review (including Anti-Cliché detection)
 5. Validate against corpus statistics
-6. Return transformed text with a full report
+6. Return transformed text with originality verification
 
 ## Project Structure
 
 ```
 douglas-adamiser/
 ├── SKILL.md                    # Main skill definition
+├── CHANGELOG.md                # Version history
 ├── prompts/                    # Agent prompts for multi-layer system
 │   ├── orchestrator.md         # Coordinates the whole show
+│   ├── content_extractor.md    # Preserves source content
+│   ├── observation_engine.md   # Generates FRESH observations
+│   ├── contemporary_adams_vision.md # 2015-2025 absurdities
+│   ├── anti_cliche_layer.md    # Bans recycled tropes
 │   ├── bathos_architect.md     # Finds things to deflate
 │   ├── metaphor_engineer.md    # Crafts comparisons
 │   ├── rhythm_analyst.md       # Ensures proper sentence flow
 │   ├── dialogue_transformer.md # Fixes dialogue tags
+│   ├── tangent_injector.md     # Inserts digressions
 │   ├── layer1_fidelity_check.md
 │   ├── layer2_technique_refinement.md
 │   └── layer3_meaning_amplification.md
 ├── reference/                  # Corpus analysis and style guides
 │   ├── literary_analysis.md    # 10-book literary analysis
 │   ├── corpus_analysis_summary.md
+│   ├── contextual_modes.md     # 5 writing modes with targets
+│   ├── original_patterns.md    # Pre-generated Adams-esque patterns
 │   ├── corpus_stats.json
 │   └── [style guides...]
 ├── scripts/                    # Validation tools
@@ -123,6 +143,6 @@ MIT License – which is to say, do what you like with it, just don't blame us w
 
 ---
 
-*"The ships hung in the sky in much the same way that bricks don't."*
+*"The skill attempted to capture something ineffable, in much the same way that a net attempts to capture fog. It worked about as well as you'd expect, which is to say better than nothing but not as well as anyone hoped."*
 
-*– Douglas Adams (who definitely wrote that bit)*
+*– The Douglas Adamiser (which wrote that bit itself, and is rather proud of it)*

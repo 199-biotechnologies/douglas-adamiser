@@ -43,15 +43,15 @@ Every paragraph follows this arc: establish something seemingly important, eleva
 
 ## Execution Workflow
 
-### Step 1: Content Extraction (CRITICAL - Preserve First)
+### Step 1: Content Extraction & Fresh Material (CRITICAL)
 
-**Run `prompts/content_extractor.md` BEFORE any transformation.**
+**Run Phase 0 BEFORE any transformation.**
 
-This creates the source of truth for content preservation:
+#### Step 1a: Content Extractor
+- Prompt: `prompts/content_extractor.md`
 - Measures source length and sets target range (60% to 115% of source)
 - Extracts ALL key points with importance ratings (HIGH/MEDIUM/LOW)
 - Maps structure for section-by-section transformation
-- Identifies Adams insertion opportunities that ADD without replacing
 
 ```
 LENGTH TARGETS
@@ -62,7 +62,25 @@ Maximum (ceiling): [N × 1.15] words
 Ideal: [N × 1.00] to [N × 1.10] words
 ```
 
+#### Step 1b: Originality Engines (run in parallel)
+
+**Observation Engine** (`prompts/observation_engine.md`):
+- Questions assumptions in source text
+- Generates FRESH observations specific to THIS topic
+- Key method: "What's actually strange about this if you think about it?"
+- Output: Fresh Observation Inventory (Grade A/B/C)
+
+**Contemporary Adams Vision** (`prompts/contemporary_adams_vision.md`):
+- Identifies 2015-2025 absurdities relevant to topic
+- Modern equivalents for digital watches, Vogon bureaucracy, etc.
+- Optional web search for recent examples (last 2 years prioritised)
+- Output: Contemporary angles for tangents/bathos
+
+**Combined Output: Fresh Material Inventory** - travels through entire pipeline.
+
 **The Preserve-First Principle:** Adams added tangents ON TOP of content. He didn't compress. The Adamiser must do the same.
+
+**The Originality Principle:** Adams invented new jokes. "Hordes of writers have tried to copy his style... but none successfully." We use his TECHNIQUES, not his specific jokes.
 
 ### Step 2: Plan Transformation
 
@@ -126,9 +144,9 @@ Apply triple-layer Adams closing:
 - Layer 2: Casual mention of universe-ending implication
 - Layer 3: Character worrying about tea/towels/bureaucracy
 
-### Step 5: Three-Layer Quality Review (Ultrathink)
+### Step 5: Four-Layer Quality Review (Ultrathink)
 
-**This is the critical differentiator: Style fidelity alone produces parody. Meaning amplification produces excellence.**
+**This is the critical differentiator: Style fidelity alone produces parody. Originality prevents imitation. Meaning amplification produces excellence.**
 
 Run sequentially - each layer feeds the next:
 
@@ -138,10 +156,20 @@ Run sequentially - each layer feeds the next:
 - Task: DETECT (not fix) style deviations using corpus-calibrated metrics
 - Output: Fidelity report with specific flags (target: ≥6/8 checks passed)
 
+#### Anti-Cliché Layer (NEW)
+- Prompt: `prompts/anti_cliche_layer.md`
+- Input: First draft + Layer 1 report
+- Task: Detect recycled Adams tropes and insufficient joke depth
+- Checks:
+  - **BANNED** (0 uses): brick similes, 42, Vogons, Babel fish, "Don't Panic"
+  - **LIMITED** (budget per 2000 words): "not entirely unlike", tea, towels
+  - **"Twist more than once"**: Single-twist jokes flagged for deepening
+- Output: Anti-Cliché report with replacement recommendations
+
 #### Layer 2: Technique Refinement
 - Prompt: `prompts/layer2_technique_refinement.md`
-- Input: First draft + Layer 1 report
-- Task: Apply SURGICAL corrections to flagged issues only
+- Input: First draft + Layer 1 report + Anti-Cliché report
+- Task: Apply SURGICAL corrections + replace clichés with fresh material
 - Output: Refined text + change log
 
 #### Layer 3: Meaning Amplification
@@ -151,6 +179,8 @@ Run sequentially - each layer feeds the next:
 - Output: Final text + amplification report
 
 **The Ultrathink Principle:** Every Adams technique must serve the content's truth. Decorative mimicry fails Layer 3.
+
+**The "Twist More Than Once" Principle:** Professional analysis notes "Douglas has to twist the line more than once." Single-layer jokes are flagged for deeper work.
 
 See `prompts/orchestrator.md` for complete workflow coordination.
 
@@ -266,18 +296,29 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 ## Reference Files
 
 ### Agent Prompts (Multi-Layer System)
-- `prompts/content_extractor.md` - **RUN FIRST** - Extracts key points, sets length targets, creates coverage checklist
-- `prompts/orchestrator.md` - Coordinates entire workflow with parallel agents and 3-layer review
+
+**Phase 0 - Extraction & Fresh Material:**
+- `prompts/content_extractor.md` - **RUN FIRST** - Extracts key points, sets length targets
+- `prompts/observation_engine.md` - **NEW** - Generates FRESH observations by questioning assumptions
+- `prompts/contemporary_adams_vision.md` - **NEW** - 2015-2025 absurdities, modern digital watch equivalents
+
+**Phase 1 - Parallel Analysis:**
+- `prompts/orchestrator.md` - Coordinates entire workflow with parallel agents and 4-layer review
 - `prompts/bathos_architect.md` - Bathos analysis and insertion (4 patterns, corpus timing)
 - `prompts/metaphor_engineer.md` - Comparison crafting (5 techniques, domain taxonomy)
 - `prompts/rhythm_analyst.md` - Sentence/paragraph structure (corpus targets)
 - `prompts/dialogue_transformer.md` - Dialogue tags and exchange patterns
-- `prompts/layer1_fidelity_check.md` - Style deviation detection (8 checkpoints)
-- `prompts/layer2_technique_refinement.md` - Surgical corrections
+- `prompts/tangent_injector.md` - Tangent insertion using fresh material
+
+**Phase 3 - Quality Layers:**
+- `prompts/layer1_fidelity_check.md` - Style deviation detection (12 checkpoints)
+- `prompts/anti_cliche_layer.md` - **NEW** - Trope detection, originality verification, "twist more than once"
+- `prompts/layer2_technique_refinement.md` - Surgical corrections + cliché replacement
 - `prompts/layer3_meaning_amplification.md` - **ULTRATHINK** - Ensures techniques serve message
 
 ### Core References
 - `reference/contextual_modes.md` - **CRITICAL** - The 5 contextual modes with mode-specific targets (Guide Entry, Narrative, Philosophical, Dialogue, Descriptive)
+- `reference/original_patterns.md` - **NEW** - 100+ pre-generated Adams-esque patterns (bathos, similes, tangents, etc.) - use instead of recycling Adams' specific jokes
 - `reference/literary_analysis.md` - Comprehensive literary patterns from 10-book corpus study
 - `reference/corpus_analysis_summary.md` - Real statistics from Adams corpus
 - `reference/adams_style_guide.md` - Complete style breakdown with examples
@@ -312,6 +353,13 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 - ~31% single-sentence paragraphs for rhythm and punchlines
 - Use "quite"/"rather" NOT "utterly" for intensification
 - Use "said" for 90% of dialogue tags
+
+**Originality Requirements (NEW):**
+- 0 BANNED Adams tropes (brick similes, 42, Vogons, Babel fish, "Don't Panic", whale/petunias)
+- LIMITED tropes within budget (max 1 "not entirely unlike" per 2000 words)
+- ≥70% of jokes must have multiple twists ("twist more than once")
+- Fresh observations from Observation Engine, not recycled Adams material
+- Contemporary (2015-2025) references where relevant
 
 **Length:** 60% to 115% of source (target: 100-110%)
 - Below 60%: Content has been lost - FAIL
