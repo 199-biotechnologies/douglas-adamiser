@@ -69,6 +69,49 @@ WATCH LIST (track frequency):
 □ "quite" + adjective (don't overuse)
 □ Parenthetical asides (vary structure)
 □ Single-sentence paragraphs for punchlines (vary placement)
+
+STANDARD EARTH CLICHÉS (banned - Adams was alien observer):
+□ "deck chairs on the Titanic"
+□ "elephant in the room"
+□ "putting lipstick on a pig"
+□ "low-hanging fruit"
+□ "boiling frog"
+□ "tip of the iceberg"
+□ "silver lining"
+□ "at the end of the day"
+□ Any other common idiom (invent fresh metaphors instead)
+
+CUTE ANIMAL VIOLATIONS (banned - animals must be bureaucratic/depressed/confused):
+□ Animals described by physical cuteness
+□ Animals doing simple physical actions (hugging, cuddling, etc.)
+□ "Twee" animal pairings (hedgehogs, bunnies, puppies without existential context)
+□ Animals without jobs, opinions, or existential crises
+
+VIRAL MEME PATTERNS (banned - sounds too "internet"):
+□ Format cascade jokes ("could have been an X, could have been a Y")
+□ List-based degradation of equivalent things
+□ Familiar Twitter/meme structures
+□ Anything that sounds like it belongs on a corporate humor account
+
+BOOK REPORT CONSTRUCTIONS (banned - Adams wrote essays, not reviews):
+□ "The author notes/describes/argues/proposes..."
+□ "The original text/letter/article states..."
+□ "According to the source..."
+□ "This piece/essay/document explains..."
+□ "The writer's point is..."
+□ Any reference to "the author" or "the original"
+
+SIMILE LOOP (frequency limit - max 2 of same structure per 1000 words):
+□ "in much the same way that" - count: [N]
+□ "provided you understood X to mean" - count: [N]
+□ "which is to say" - count: [N]
+□ Any other repeated comparison structure
+
+ADAMS UNIVERSE LOGIC VIOLATIONS (banned - breaks worldview):
+□ Anything reducing bureaucracy
+□ Technology cleanly solving problems
+□ Institutions wanting to help (sincerely)
+□ Generic examples where specific trivia would work
 ```
 
 ## Detection Process
@@ -80,13 +123,50 @@ Search the draft for ANY of the banned phrases or concepts. Flag immediately.
 ```
 BANNED ITEM DETECTION
 =====================
+Adams-specific tropes:
 □ Brick simile variants: [FOUND/CLEAR]
 □ 42 references: [FOUND/CLEAR]
 □ Vogon references: [FOUND/CLEAR]
 □ Character names: [FOUND/CLEAR]
 □ Plot-specific references: [FOUND/CLEAR]
 
+Standard Earth clichés:
+□ Titanic/deck chairs: [FOUND/CLEAR]
+□ Elephant in room: [FOUND/CLEAR]
+□ Other common idioms: [LIST ANY FOUND]
+
+Cute animal violations:
+□ Twee animals: [FOUND/CLEAR]
+□ Animals without jobs/opinions/crises: [LIST ANY]
+
+Viral meme patterns:
+□ Format cascades: [FOUND/CLEAR]
+□ Twitter-esque structures: [LIST ANY]
+
 Status: [CLEAR / VIOLATIONS FOUND]
+```
+
+### Step 1b: Industrial/Domestic Collision Check
+
+Adams compared abstract concepts to specific household/industrial objects. Verify this technique is present.
+
+```
+INDUSTRIAL/DOMESTIC COLLISION AUDIT
+===================================
+Abstract concepts in text: [list them]
+Metaphors using household/industrial objects: [count]
+
+Minimum requirement: At least 1 per 500 words
+Current density: [N per 500 words]
+
+Examples found:
+1. "[Abstract]" → "[domestic/industrial object]" ✓/✗
+2. ...
+
+Status: [SUFFICIENT / NEEDS MORE]
+
+If insufficient, suggest additions:
+- "[Abstract concept]" could become → "as [X] as a [household object] trying to [human task]"
 ```
 
 ### Step 2: Count Limited Items

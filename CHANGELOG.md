@@ -6,6 +6,70 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.5.0] - 2025-01-10
+
+### Added - The "Adams Essence" System
+
+Addressing feedback that output was "Great Pastiche" but not "Indistinguishable from the Real Thing." Major improvements to worldview consistency, comparison variety, and avoiding "book report" mode.
+
+#### New Core Principles (reference/original_patterns.md)
+
+**Five Adams Essence Principles:**
+1. **Industrial/Domestic Collision** - Compare abstract concepts to specific household objects
+2. **Animals Must Be Bureaucratic/Depressed/Confused** - Never cute or twee
+3. **Avoid Standard Earth Clichés** - Adams was an alien observer
+4. **Don't Echo Famous Structural Riffs** - Avoid copying the "hung in the air" structure
+5. **Describe Entropy, Don't List Formats** - Avoid "viral meme" style
+
+**Five Adams Universe Rules (Internal Logic):**
+1. **Bureaucracy Always Increases** - Never decreases, even with technology
+2. **Technology Creates New Problems** - Never cleanly solves old ones
+3. **Cosmic Indifference, Institutional Hostility** - Universe doesn't care, committees do
+4. **Specific Triviality Over Generic Profundity** - "buttered toast" not "fire is hot"
+5. **Humans Are Proud of Embarrassing Things** - Trivial achievements celebrated
+
+**Six Comparison Structure Alternatives:**
+- Structure A: Negative Definition ("did not help, in the sense that...")
+- Structure B: Precise Trivial Truth (buttered toast, not fire)
+- Structure C: Scale Comparison ("roughly as useful as...")
+- Structure D: "Provided You Understood" Inversion
+- Structure E: Behavioural Animal (bureaucratic/depressed/confused)
+- Structure F: "Which Is To Say" Reframe
+
+#### "Not a Book Report" Rule (prompts/content_extractor.md)
+
+- **BANNED:** "The author notes/describes/argues..."
+- **BANNED:** Any reference to "the author" or "the original"
+- Source content becomes ABSOLUTE FACT in Adams universe
+- Events simply ARE, opinions simply EXIST
+- Write Guide Entries, not book reviews
+
+#### Enhanced Anti-Cliché Detection (prompts/anti_cliche_layer.md)
+
+New detection categories:
+- Standard Earth clichés (Titanic, elephant in room, etc.)
+- Cute animal violations
+- Viral meme patterns
+- Book report constructions
+- Simile loop frequency tracking
+- Adams Universe logic violations
+
+#### Pattern Fixes
+
+Fixed 4 patterns that violated newly established principles:
+- #1: Removed "hung in air" structure clone
+- #10: Replaced cute hedgehog with bureaucratic badger
+- #45: Replaced Titanic cliché with crashing plane metaphor
+- #84: Replaced viral "email cascade" with entropy description
+
+### Changed
+
+- `metaphor_engineer.md`: Added Technique F (Industrial/Domestic Collision) and animal rules
+- `observation_engine.md`: Added Step 6 (Industrial/Domestic Collision Brainstorm)
+- Simile loop frequency limit: max 2 of any structure per 1000 words
+
+---
+
 ## [0.4.0] - 2025-01-10
 
 ### Added - The Originality System

@@ -124,7 +124,36 @@ Example for "personal goals":
 - Dreams now need project management certification
 ```
 
-### Step 6: The Outsider Perspective
+### Step 6: Industrial/Domestic Collision Brainstorm
+
+Adams compared abstract concepts to specific household or industrial objects. For each abstract concept in the source, brainstorm physical objects that could represent it.
+
+```
+INDUSTRIAL/DOMESTIC COLLISION INVENTORY
+=======================================
+Abstract concepts in source:
+1. [Concept] - e.g., "technological progress"
+2. [Concept] - e.g., "corporate communication"
+3. [Concept] - e.g., "existential uncertainty"
+
+Household/industrial objects to collide with:
+Kitchen: toaster, dishwasher, kettle, blender, microwave, refrigerator, can opener
+Office: printer, stapler, filing cabinet, desk lamp, paper shredder, photocopier
+Tools: spirit level, hammer, screwdriver, drill, tape measure, ladder
+Domestic: vacuum cleaner, washing machine, doorbell, smoke alarm, thermostat
+
+Collision suggestions:
+1. "[Concept 1]" → "[object] trying to [futile human task]"
+   e.g., "Progress arrived with all the efficiency of a stapler in a paperless office"
+2. "[Concept 2]" → "the quiet desperation of a [object] in [wrong context]"
+   e.g., "Communication flowed with the quiet desperation of a kettle in a coffee shop"
+3. "[Concept 3]" → "as [adjective] as a [object] [experiencing futility]"
+   e.g., "As certain as a smoke alarm about which meal you're cooking"
+```
+
+**The key:** The object must be SPECIFIC (not "appliance" but "toaster"), and its situation must be recognisably futile or absurd.
+
+### Step 7: The Outsider Perspective
 
 Adams used alien viewpoints to defamiliarise the familiar. How would this look to:
 
@@ -149,7 +178,7 @@ Example for "productivity apps":
 - Alien: "You built tools to help you do things you don't want to do. Why not simply... not do them?"
 ```
 
-### Step 7: Compile Fresh Material
+### Step 8: Compile Fresh Material
 
 Gather the best observations for use in transformation:
 
@@ -195,6 +224,10 @@ Bureaucratic absurdity:
 
 Outsider perspective:
 - [Best outsider observation]
+
+Industrial/Domestic Collisions:
+- "[Abstract]" → "[object] + [futile situation]"
+- "[Abstract]" → "[object] + [futile situation]"
 
 Best observations for transformation:
 1. "[Text]" - Grade [A/B/C]

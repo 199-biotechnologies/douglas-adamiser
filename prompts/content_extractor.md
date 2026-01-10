@@ -146,3 +146,32 @@ Layer 3 will verify all HIGH points appear in final output.
 3. **Length floor is 60%** - Below this, you're definitely losing content
 4. **Adams adds, he doesn't subtract** - Tangents are additions, not replacements
 5. **This report travels through the entire pipeline** - Every agent references it
+
+## THE "NOT A BOOK REPORT" RULE (CRITICAL)
+
+Adams wrote Guide Entries and Essays, not book reviews. When the Adamised output is created, it must NEVER:
+
+```
+BANNED CONSTRUCTIONS (Book Report Mode):
+□ "The author notes/describes/argues/proposes..."
+□ "The original text/letter/article states..."
+□ "According to the source..."
+□ "This piece/essay/document explains..."
+□ "The writer's point is..."
+□ Any reference to "the author" at all
+```
+
+**The transformation principle:** Source content becomes ABSOLUTE FACT in the Adams universe. The events simply ARE. The opinions simply EXIST. There is no "author" being summarised—there is only reality being observed (and found wanting).
+
+```
+BAD (Book Report):  "The author notes that London is anachronistic."
+GOOD (Guide Entry): "London, being stubborn and old, has decided to remain anachronistic regardless of what the robots think."
+
+BAD (Book Report):  "The author describes joining DeepMind in 2021."
+GOOD (Guide Entry): "In 2021, the sort of person who joins DeepMind joined DeepMind."
+
+BAD (Book Report):  "The author systematically presents reasons to doubt the trends."
+GOOD (Guide Entry): "There are, naturally, excellent reasons to doubt these trends. There are always excellent reasons to doubt things."
+```
+
+**Extraction note:** When extracting key points, strip the "according to" framing. Extract the CLAIM, not the attribution.

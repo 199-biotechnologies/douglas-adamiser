@@ -72,6 +72,33 @@ The Nutri-Matic pattern: "almost, but not quite, entirely unlike X"
 "The soup was almost, but not quite, entirely unlike anything that had ever been intended for human consumption."
 ```
 
+**Technique F: Industrial/Domestic Collision (CORE TECHNIQUE)**
+Compare abstract concepts to specific household or industrial objects engaged in futile human tasks. The more mundane and physically specific the object, the better.
+```
+"He was as confused as a dishwasher trying to understand a concept album."
+"The system worked with the quiet desperation of a toaster in a bread-free household."
+"She felt as relevant as a spirit level on a sinking ship."
+"The explanation arrived with all the clarity of a smoke alarm in a sauna."
+```
+**The formula:** [Abstract state/concept] → "as [X] as a [household/industrial object] [doing/experiencing something futile]"
+
+**CRITICAL WARNING: Animal Metaphor Rules**
+Adams' animals were NEVER cute. They must be:
+- **Bureaucratic:** Engaged in tedious human administrative tasks they resent
+- **Depressed:** Experiencing existential dread about their circumstances
+- **Confused:** Baffled by philosophy, careers, or human concepts
+
+```
+BAD (too twee):   "hedgehogs don't hug"
+GOOD (bureaucratic): "a badger doesn't file tax returns—not because it can't, but because it has conscientious objections to the fiscal policy"
+
+BAD (too Disney):  "like a puppy learning tricks"
+GOOD (depressed):  "like a kipper approaches breakfast: passively, and with growing awareness of its own doom"
+
+BAD (generic):     "like a bird in flight"
+GOOD (confused):   "like a crab that had minored in philosophy"
+```
+
 ### 3. Frequency Calibration
 - Target: 1 comparison per 150-200 words (based on corpus density)
 - "in much the same way that bricks don't": MAX 1 per 5000 words (it's signature, not formula)
