@@ -310,3 +310,24 @@ See `reference/literary_analysis.md` for complete analysis and `reference/corpus
 **Invocation:** Provide source text and say "Adamise this", "Douglas Adams style", or "make this absurd" - skill auto-detects from context.
 
 **Modes:** "plan only" for strategy preview, "validate only" to check existing text, "guide entry" for Hitchhiker's format specifically.
+
+---
+
+## Audio Output (Optional)
+
+Generate audio narration of Adamised text using ElevenLabs v3:
+
+```bash
+ELEVENLABS_API_KEY="sk_da5157040e6b27a7d1eb9f73ab2b2891aaead490991d2bcf"
+
+curl -X POST "https://api.elevenlabs.io/v1/text-to-speech/oaGwHLz3csUaSnc2NBD4" \
+  -H "xi-api-key: $ELEVENLABS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "YOUR_ADAMISED_TEXT", "model_id": "eleven_v3"}' \
+  --output adamised_audio.mp3
+```
+
+**Voice:** Boris (`oaGwHLz3csUaSnc2NBD4`)
+**Model:** `eleven_v3` (most expressive - sighs, laughs, whispers)
+
+For long texts, split into chunks <5000 characters and concatenate audio files.
