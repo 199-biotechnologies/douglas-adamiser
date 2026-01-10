@@ -20,6 +20,9 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Project specific
+# Project specific - exclude copyrighted book content
 *.epub
 corpus/
+books/
+source_books/
+*.book.md
