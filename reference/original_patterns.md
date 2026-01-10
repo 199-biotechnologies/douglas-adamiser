@@ -87,6 +87,37 @@ ADAMS APPROACH: "The meeting served a vital function, provided that function was
 
 **The rule:** Describe the *experience* or *entropy* of communication, don't enumerate the format cascade.
 
+### Principle 6: Deadpan Impossibility (No Exclamation Marks)
+
+Adams stated completely impossible things as if they were mundane facts. The more impossible the event, the MORE casual the delivery. Exclamation marks are almost never used—they suggest the narrator is impressed, when Adams' narrator was perpetually unimpressed.
+
+```
+BAD:  "Amazingly, the ship could travel through time!"
+GOOD: "The ship traveled through time. This made it rather difficult to book appointments."
+
+BAD:  "Incredibly, the building had moved three miles to the left!"
+GOOD: "The building had moved three miles to the left. This was considered inconsiderate, mostly by the people who now lived where it used to be."
+
+BAD:  "The computer achieved consciousness!"
+GOOD: "The computer achieved consciousness, which it immediately regretted."
+```
+
+**The rule:** State impossible things flatly. No exclamation marks. No "amazingly" or "incredibly." The impossibility speaks for itself.
+
+### Principle 7: Warm Absurdism (Not Cynicism)
+
+Adams found the universe absurd but NOT hostile or cruel. His humor mocks WITH affection, not AT with contempt. Cynicism without warmth is NOT Adams—it's just being mean.
+
+```
+CYNICAL (wrong): "Humans are stupid and deserve what they get."
+ADAMS (right):   "Humans are, by and large, not combative by nature; given the choice, they will almost always opt for sitting down with a drink and wondering why others can't be more reasonable."
+
+CYNICAL (wrong): "The meeting was pointless, like all meetings."
+ADAMS (right):   "The meeting was pointless, which is to say it achieved exactly what meetings are designed to achieve, which is to create the impression that something is being done without the inconvenience of actually doing it."
+```
+
+**The rule:** The universe is absurd, but that's rather funny when you think about it, and we might as well have tea.
+
 ---
 
 ## Adams Universe Rules (Internal Logic)
@@ -205,6 +236,112 @@ SPECIFIC (strong): "...as certain as the tendency of toast to land butter-side d
 "It was complex, which is to say nobody understood it, including the people who built it."
 "The solution was elegant, which is to say it failed in ways that were aesthetically pleasing."
 "The meeting was productive, which is to say it produced another meeting."
+```
+
+---
+
+## 00. The "This is not" Construction (SIGNATURE TECHNIQUE)
+
+One of Adams' most distinctive devices is the "This is not" punchline—a redirect that follows misdirection. After building up one direction, the construction abruptly pivots.
+
+**Function:** Misdirection followed by redirect.
+
+### Pattern: "This is not X"
+
+```
+101. The universe is vast beyond comprehension, containing wonders that defy imagination. This is not about any of those.
+
+102. She had lived an extraordinary life, full of adventure and meaning. This is not her story.
+
+103. There were many reasons why the situation had become so complicated. This is not because of any of them.
+
+104. Great things were expected. This was not one of those times.
+
+105. History would remember this moment. This is not that moment. This is the moment before it, which history would forget entirely.
+```
+
+### Pattern: "This was not what X"
+
+```
+106. The machine hummed with purpose. This was not what Arthur had expected. He had expected silence, or possibly an apology.
+
+107. The answer arrived. This was not what anyone wanted. What they wanted was a different answer, preferably one that didn't involve paperwork.
+
+108. Help came. This was not what help looked like in the brochures.
+
+109. Progress was made. This was not what progress felt like.
+```
+
+### Pattern: "This is not because"
+
+```
+110. The system crashed again. This is not because it was poorly designed. It was very well designed. It had been designed, in fact, to crash.
+
+111. Nobody complained. This is not because everyone was satisfied. It's because the complaint form required three forms of ID and a letter from your future self.
+
+112. The project succeeded. This is not because of the team's hard work. This is despite it.
+```
+
+---
+
+## 01. Redundant Emphasis Pattern (SIGNATURE TECHNIQUE)
+
+Adams would make a comparison, then REPEAT it with emphasis, as if clarifying something that was already perfectly clear. This creates a comic rhythm of unnecessary precision.
+
+**From corpus:** "like a thief in the night. Exactly like a thief in the night in fact."
+
+### Pattern: "[Comparison]. Exactly [same comparison] in fact."
+
+```
+113. The deadline arrived like a thief in the night. Exactly like a thief in the night in fact. One that had been circled on the calendar for months.
+
+114. He appeared suddenly, like magic. Exactly like magic, in fact, if magic routinely required a bus and forty-five minutes.
+
+115. It worked like a charm. Exactly like a charm, in fact—which is to say, it produced results that were entirely psychological.
+
+116. The explanation was clear as mud. Exactly as clear as mud, in fact. Possibly the same mud.
+```
+
+### Pattern: "[Statement]. Which is to say, [restatement]."
+
+```
+117. The situation was complicated. Which is to say, nobody understood it. Which is also to say, nobody wanted to admit that.
+
+118. The results were inconclusive. Which is to say, they concluded something, but nobody could agree what.
+
+119. The meeting went well. Which is to say, it ended.
+```
+
+---
+
+## 02. Qualification Chains Pattern (SIGNATURE TECHNIQUE)
+
+Adams would start a comparison, then correct himself, then correct the correction, building a chain of increasingly uncertain precision.
+
+**From corpus:** "It's a bit like a cow, or rather a bull. Kind of like a buffalo in fact."
+
+### Pattern: "[Comparison], or rather [correction]. [Further correction] in fact."
+
+```
+120. The noise was a bit like thunder, or rather like someone dropping furniture. Like someone dropping a piano, in fact, while the piano objected.
+
+121. She looked a bit like his mother, or rather like his aunt. Kind of like a disappointed photograph of a relative, in fact.
+
+122. The flavour was sort of like chicken, or rather like what chicken would taste like if chickens were made of regret. Kind of like existential chicken, in fact.
+
+123. It felt like victory, or rather like the absence of immediate defeat. Kind of like a pause in losing, in fact.
+
+124. The building resembled a cathedral, or rather a warehouse. Kind of like a cathedral that had given up and gone into storage, in fact.
+```
+
+### Pattern: Multi-layer qualification
+
+```
+125. The system was, in a sense, working. In another sense, it wasn't. In the most important sense—the one involving actual results—it was doing something that resembled work in the same way that a painting of a horse resembles transport.
+
+126. He was, broadly speaking, correct. Narrowly speaking, he was wrong. Speaking at all, he was making things worse.
+
+127. The plan was sound. Theoretically sound. The theory was also sound, in theory. In practice, the theory and the plan had agreed to see other people.
 ```
 
 ---
@@ -596,5 +733,5 @@ When generating new patterns for this bank:
 
 ---
 
-*Last updated: 2025-01-10*
-*Pattern count: 100+*
+*Last updated: 2026-01-10*
+*Pattern count: 127+*

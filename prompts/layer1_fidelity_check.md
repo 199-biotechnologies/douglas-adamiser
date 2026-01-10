@@ -106,6 +106,24 @@ Target: ~9 questions per 1,000 words
 
 **Flag if**: <5 or >15 questions per 1,000 words.
 
+### 7b. "In fact" / "Of course" Density (CRITICAL - Often Missed)
+These phrases are VERY common in Adams and signal his deadpan delivery:
+- "in fact": 4.69 per 10,000 words
+- "of course": 4.56 per 10,000 words
+
+**Target**: At least one "in fact" OR "of course" per 2,000 words.
+
+**Flag if**: Neither phrase appears in 2,000+ words. This signals missing deadpan markers.
+
+### 7c. Exclamation Mark Audit (Deadpan Impossibility)
+Adams used exclamation marks extremely rarely. They suggest the narrator is impressed—Adams' narrator was perpetually unimpressed.
+
+**Flag if**: More than 1 exclamation mark per 2,000 words.
+**Flag if**: Exclamation mark follows words like "Amazingly," "Incredibly," "Astonishingly."
+
+**Example of what to flag:**
+- "Amazingly, the ship could travel through time!" → Should be: "The ship traveled through time. This made appointments rather difficult."
+
 ### 8. Opening Pattern
 Strong openings use:
 - Direct statement (most common)
@@ -233,6 +251,12 @@ DIALOGUE CHECK:
 
 QUESTION CHECK:
 - Questions per 1000 words: [N]
+- Status: [PASS/NEEDS ATTENTION]
+
+DEADPAN MARKERS CHECK:
+- "in fact" count: [N] (target: 1+ per 2000 words)
+- "of course" count: [N] (target: 1+ per 2000 words)
+- Exclamation marks: [N] (target: <1 per 2000 words)
 - Status: [PASS/NEEDS ATTENTION]
 
 OPENING CHECK:

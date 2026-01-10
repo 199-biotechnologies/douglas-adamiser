@@ -112,6 +112,18 @@ ADAMS UNIVERSE LOGIC VIOLATIONS (banned - breaks worldview):
 □ Technology cleanly solving problems
 □ Institutions wanting to help (sincerely)
 □ Generic examples where specific trivia would work
+
+CYNICISM WITHOUT WARMTH (banned - Adams mocked WITH affection):
+□ Mean-spirited observations (punching down)
+□ Cruelty disguised as humor
+□ Contempt for humanity (rather than fond exasperation)
+□ Hopelessness without comic relief
+□ Phrases suggesting people "deserve" bad outcomes
+
+DEADPAN IMPOSSIBILITY VIOLATIONS (banned - narrator should be unimpressed):
+□ Exclamation marks after impossible events
+□ "Amazingly," "Incredibly," "Astonishingly" before impossible facts
+□ Narrator expressing surprise at absurdity (should be weary acceptance)
 ```
 
 ## Detection Process

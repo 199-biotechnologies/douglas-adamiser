@@ -6,6 +6,76 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.6.0] - 2026-01-10
+
+### Added - Corpus Analysis Deep Dive
+
+Reviewing the corpus analysis files revealed several signature Adams techniques that were documented but not actively incorporated into the skill. This update captures them.
+
+#### New Principles (reference/original_patterns.md)
+
+**Principle 6: Deadpan Impossibility**
+- Adams stated impossible things as mundane facts
+- The more impossible, the MORE casual the delivery
+- Exclamation marks almost never used
+- No "Amazingly," "Incredibly," "Astonishingly"
+
+**Principle 7: Warm Absurdism (Not Cynicism)**
+- Adams mocked WITH affection, not AT with contempt
+- Cynicism without warmth is NOT Adams
+- The universe is absurd, but that's rather funny
+
+#### New Signature Patterns (reference/original_patterns.md)
+
+**"This is not" Construction (Patterns 101-112):**
+- "This is not her story"
+- "This was not what X expected"
+- "This is not because..."
+- Function: Misdirection followed by redirect
+
+**Redundant Emphasis Pattern (Patterns 113-119):**
+- "[Comparison]. Exactly [same comparison] in fact."
+- "[Statement]. Which is to say, [restatement]."
+- Creates comic rhythm of unnecessary precision
+
+**Qualification Chains Pattern (Patterns 120-127):**
+- "[Comparison], or rather [correction]. [Further correction] in fact."
+- Multi-layer qualifications building uncertain precision
+- From corpus: "It's a bit like a cow, or rather a bull. Kind of like a buffalo in fact."
+
+#### New Validation Targets (prompts/layer1_fidelity_check.md)
+
+**7b. "In fact" / "Of course" Density:**
+- Target: 1+ per 2,000 words (either phrase)
+- "in fact": 4.69 per 10,000 words in corpus
+- "of course": 4.56 per 10,000 words in corpus
+- Flag if neither appears in 2,000+ words
+
+**7c. Exclamation Mark Audit:**
+- Target: <1 per 2,000 words
+- Flag if exclamation mark follows "Amazingly," etc.
+- Enforces Deadpan Impossibility principle
+
+#### New Anti-Cliché Categories (prompts/anti_cliche_layer.md)
+
+**Cynicism Without Warmth (banned):**
+- Mean-spirited observations
+- Contempt for humanity
+- Phrases suggesting people "deserve" bad outcomes
+
+**Deadpan Impossibility Violations (banned):**
+- Exclamation marks after impossible events
+- "Amazingly," "Incredibly," "Astonishingly" before impossible facts
+- Narrator expressing surprise at absurdity
+
+### Changed
+
+- Pattern count increased from 100 to 127
+- Added "DEADPAN MARKERS CHECK" to Layer 1 output format
+- Principle count increased from 5 to 7 in Adams Essence section
+
+---
+
 ## [0.5.0] - 2025-01-10
 
 ### Added - The "Adams Essence" System
